@@ -1,0 +1,126 @@
+<% layout('/layouts/layout') -%>
+
+          <!-- HEADER DESKTOP-->
+          <header class="header-desktop">
+              <div class="section__content section__content--p30">
+                  <div class="container-fluid">
+                      <div class="header-wrap">
+                          <form class="form-header" action="" method="POST">
+                              <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                              <button class="au-btn--submit" type="submit">
+                                  <i class="zmdi zmdi-search"></i>
+                              </button>
+                          </form>
+                          <div class="header-button">
+                              <div class="noti-wrap">
+                                 
+                                  <div class="noti__item js-item-menu">
+                                      <i class="zmdi zmdi-email"></i>
+                                      <span class="quantity">1</span>
+                                      <div class="email-dropdown js-dropdown">
+                                          <div class="email__title">
+                                              <p>You have 3 New Emails</p>
+                                          </div>
+                                          <div class="email__item">
+                                              <div class="image img-cir img-40">
+                                                  <img src="/images/icon/avatar-06.jpg" alt="Cynthia Harvey" />
+                                              </div>
+                                              <div class="content">
+                                                  <p>Meeting about new dashboard...</p>
+                                                  <span>Cynthia Harvey, 3 min ago</span>
+                                              </div>
+                                          </div>
+                                      
+                                          <div class="email__footer">
+                                              <a href="#">See all emails</a>
+                                          </div>
+                                      </div>
+                                  </div>                                
+                              </div>
+                              <div class="account-wrap">
+                                  <div class="account-item clearfix js-item-menu">
+                                      <div class="image">
+                                          <a href=""></a>
+                                      </div>
+                                      <div class="content">
+                                          <a class="js-acc-btn" href="#">Logout </a>
+                                      </div>
+                                    
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </header>
+          <!-- HEADER DESKTOP-->
+<link rel="stylesheet" href="/css1/styles.css"/>
+<script type="text/javascript">
+  $(function(){   
+    $('#keywords').tablesorter(); 
+  });
+  </script>
+
+<div style="margin:10px;margin-left:45%;margin-top:60px;">
+<form class="form-header form-header2" action="/dashboard/go" method="post">
+  <input class="au-input au-input--w435" name="search" placeholder="Search by firstname" style="border: 1px solid #ccc;" type="text">
+  <button class="au-btn--submit" type="submit">
+      <i class="zmdi zmdi-search"></i>
+  </button>
+</form>
+</div>
+  <br/>
+<table id="keywords" style="margin-left:25%;width:200px;" class="table table-borderless table-striped table-earning" cellspacing="0" cellpadding="0">
+ 
+  <thead>
+  <tr>
+    <th><span>ID</span></th>
+    <th><span>FirstName</span></th>
+    <th ><span>LastName</span></th>
+    <th ><span>Email</span></th>
+    <th ><span>Edit</span></th>
+    <th ><span>Delete</span></th>
+  
+  </tr>
+</thead>
+  <% for(var i=0; i < data.length; i++) { %>
+  <tr>
+    <td class="lalign"><%= data[i].id %></td>
+     <td><%= data[i].firstname %></td>
+     <td><%= data[i].lastname %></td>
+     <td><%= data[i].email %></td>
+     <td><a href =/dashboard/edit/<%= data[i].id %>>Edit</a></td>
+     <td><a onclick="return confirm('Are you sure you want to delete this item?');" href =/dashboard/delete/<%= data[i].id %>>Delete</a></td>
+  </tr>
+  <% } %>
+</table>
+
+
+<!-- pagination start -->
+<div class="rows" style="margin-left:25%">
+  <% if(pageCount > 1) { %>
+    <ul class="pagination">
+      <%
+      var y = 1;
+      if(currentPage>1) {
+        y = currentPage-1;
+        %>
+        <li> <a href="/dashboard/?page=<%= y %> %>">&laquo;</a> </li>
+      <% } %>
+      <%  for (y; y <= pageCount; y++) {
+        if(currentPage == y) { %>
+            <li><span><%= y %></span></li>
+        <% }else{ %>
+            <li><a href="/dashboard/?page=<%= y %>"><%= y %></a></li>
+        <% }
+          if(parseInt(currentPage) + 4 == y) {
+            break;
+          }
+      }  %>
+      <% if(currentPage != pageCount) { %>
+        <li> <a href="/dashboard/?page=<%= Math.ceil(pageCount) %>">&raquo;</a> </li>
+      <% } %>
+    </ul>
+  <% } %>
+
+

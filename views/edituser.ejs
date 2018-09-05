@@ -1,0 +1,31 @@
+
+<% layout('/layouts/layoutmenu') -%>
+  <form method="POST" action="/dashboard/update/<%= data[0].id %>">
+  <h1>Update User</h1>
+        <!-- MAIN CONTENT-->
+        <div class="main-content" style="padding:35px;">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="row" style="margin-left: 200px;">
+                       
+                            <div class="table-responsive table-">
+  <table class="table table-borderless table-striped table-earning">
+      <tr>
+      <td>First name</td>
+      <td><input width="250px;" class="form-control" type="text" name="fname" value="<%= data[0].firstname %>"></td>
+      </tr>
+      <tr>
+      <td>last name</td>
+      <td><input type="text" class="form-control" name="lname" value="<%= data[0].lastname %>"></td>
+      </tr>
+      <tr >
+      <td colspan="2"><input type="submit" class="btn btn-lg btn-info btn-block" value="Update" ></td>
+      </tr>
+  </table>
+</div>
+
+</div>
+</div>
+</div>
+  </form>
+

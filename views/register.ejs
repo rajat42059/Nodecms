@@ -1,0 +1,54 @@
+<% layout('/layouts/login') -%>
+
+<% if (errors) { %>
+    <% errors.forEach(function(errors) { %>
+        
+       
+        <div class="alert alert-danger"> <h5><%= errors.msg %> </h5></div>
+    
+    <% }); %>
+    <% }  %>
+    <div class="logo">
+        <a href="#">
+            <img src="/images/icon/takeda.png" style="margin-top:20px;margin-left:-20px;" width="150px" alt="Cool Admin" />
+        </a>
+    </div>
+  <form method="POST" action="register">
+  <h1 style="margin-left:35%">Register User</h1>
+        <!-- MAIN CONTENT-->
+        <div class="main-content" style="padding:35px;">
+            <div class="section__content section__content--p30">
+             
+                            <div class="table-responsive table--no-card m-b-30">
+  <table class="table table-borderless table-striped table-earning">
+      <tr>
+      <td>First name</td>
+      <td><input width="250px;" class="form-control" type="text" name="fname"></td>
+      </tr>
+      <tr>
+      <td>last name</td>
+      <td><input type="text" class="form-control" name="lname" ></td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td><input type="text" class="form-control" name="email" ></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" class="form-control" name="password" ></td>
+            </tr>
+
+            <tr>
+                <td>Confirm Password</td>
+                <td><input type="password" class="form-control" name="cpassword" ></td>
+                </tr>
+
+      <tr >
+      <td colspan="2"><input type="submit" class="btn btn-lg btn-info" style="margin-left:400px;margin-top: 25px;"value="Register" ></td>
+      </tr>
+  </table>
+</div>
+</div>
+
+  </form>
+

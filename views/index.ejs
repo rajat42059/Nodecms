@@ -1,0 +1,132 @@
+<% layout('/layouts/login') -%>
+
+  <form method="POST" action="/login">
+    <div class="page-wrapper">
+        <% if (errors) { %>
+            <% errors.forEach(function(errors) { %>
+                
+               
+                <div class="alert alert-danger"> <h5><%= errors.msg %> </h5></div>
+            
+            <% }); %>
+            <% }  %>
+        <div class="page-content--bge5">
+            <div class="container">
+                <div class="login-wrap">
+                    <div class="login-content">
+                        <div class="login-logo">
+                            <a href="#">
+                                <img src="images/icon/takeda.png" alt="Takeda CII">
+                            </a>
+                        </div>
+                        <div class="login-form">
+                           
+                                <div class="form-group">
+                                    <label>Email Address<span style="color:red">*</span></label>
+                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <label>Password<span style="color:red">*</span></label>
+                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
+                                </div>
+                                <div class="login-checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember">Remember Me
+                                    </label>
+                                  
+                                   
+                                        <button  type="button" id="myBtn" > Forgotten Password?</button>
+                                  
+                                </div>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
+                                <div style="display: none;" class="social-login-content">
+                                    <div class="social-button">
+                                        <button class="au-btn au-btn--block au-btn--blue m-b-20">sign in with facebook</button>
+                                        <button class="au-btn au-btn--block au-btn--blue2">sign in with twitter</button>
+                                    </div>
+                                </div>
+                         
+                            <div class="register-link">
+                                <p>
+                                    Don't you have account?
+                                    <a href="/register">Sign Up Here</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+				</form>
+	
+
+<!-- Modal content for adding new module -->                    
+<div id="myModal" class="modal" >
+    
+    <form method="POST" style="width:600px;margin-left:370px;margin-top:155px;" action="/reset">
+   
+       <div class="modal-content">
+            <div id="email" style="display:none;" class="alert alert-danger"> <h5> Email Do not Exists </h5></div>
+         <span class="close">&times;</span>               
+         <div class="row" style="margin: 20px;">
+                
+                 <div class="table-responsive table-">
+<table class="table table-borderless table-striped table-earning">
+<tr>
+<td>Enter Email</td>
+<td><input width="150px;" class="form-control" type="email" name="email" required></td>
+</tr>
+
+<tr >
+<td colspan="2"><input type="submit" class="btn btn-lg btn-info btn-block" value="Reset" ></td>
+</tr>
+</table>
+</div>
+
+</div>
+       </div>
+
+     </form>
+     </div>
+
+<script>
+    // Get the modal
+    var modal = document.getElementById('myModal'); 
+    var btn = document.getElementById("myBtn");
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];            
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+    
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    
+            // Get the modal
+            var modal1 = document.getElementById('myModal1'); 
+            var btn1 = document.getElementById("myBtn1");
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close1")[0];            
+            // When the user clicks the button, open the modal 
+            btn1.onclick = function() {
+                modal1.style.display = "block";
+            }
+            
+            span.onclick = function() {
+                modal1.style.display = "none";
+            }
+            window.onclick = function(event) {
+                if (event.target == modal1) {
+                    modal1.style.display = "none";
+                }
+            }
+            </script>

@@ -1,0 +1,31 @@
+
+<% layout('/layouts/layoutmenu') -%>
+  <form method="POST" action="/dna/update/<%= data[0].id %>">
+  <h1>Update User</h1>
+        <!-- MAIN CONTENT-->
+        <div class="main-content" style="padding:35px;">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="row" style="margin-left: 200px;">
+                       
+                            <div class="table-responsive table-">
+                                <table class="table table-borderless table-striped table-earning">
+                                    <tr>
+                                    <td>Module name</td>
+                                    <td contenteditable='true'><input class="form-control" type="text" name="module_name" value="<%= data[0].module_name %>"></td>
+                                    </tr>
+                                    <tr>
+                                    <td>Color </td>
+                                    <td><input type="color" class="form-control" name="module_color" value="<%= data[0].module_color %>"></td>
+                                    </tr>
+                                    <tr >
+                                    <td colspan="2"><input type="submit" class="btn btn-lg btn-info btn-block" value="Update" ></td>
+                                    </tr>
+                                </table>
+</div>
+
+</div>
+</div>
+</div>
+  </form>
+

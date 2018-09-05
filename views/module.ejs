@@ -1,0 +1,172 @@
+
+<% layout('/layouts/layoutmenu') -%>
+
+
+    <div class="page-wrapper">
+        
+              <!-- PAGE CONTAINER-->
+        <div class="page-container">
+               
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+
+                        <%- messages() %>
+                    
+
+                        <div class="col-md-12">
+                                <div class="overview-wrap">
+                                    <h2 class="title-1"></h2>
+                                    <button id="myBtn" class="au-btn au-btn-icon au-btn--blue">
+                                        <i class="zmdi zmdi-plus"></i>Add New Module</button>
+                                </div>
+                            </div>
+                        <table  style="width:400px;" class="table table-borderless table-striped table-earning" cellspacing="0" cellpadding="0">
+                                
+
+                              
+
+                                <thead>
+                                <tr>
+                                  <th><span>ID1</span></th>
+                                  <th><span>Module Name</span></th>                                 
+                                  <th width="20px"><span>Module Color</span></th>
+                                  <th ><span>Edit</span></th>                                  
+                                  <th ><span>Delete</span></th>
+                                
+                                </tr>
+                              </thead>
+                                <% for(var i=0; i < data.length; i++) { %>
+                                <tr>
+                                   
+                                       
+                                  <td class="lalign"><%= data[i].id %></td>                          
+                                   <td ><a style="text-decoration:none;color:#808080"  href=/dna/view/<%= data[i].module_id %>><%= data[i].module_name %></a></td>
+                                
+                                   <td width="20px" style="background-color:<%= data[i].module_color %>"></td>
+                                   <td class="myBtn1" id="myBtn1"><a href =/dna/edit/<%= data[i].id %>>Edit</a></td>
+                                  
+                                   <td><a onclick="return confirm('Are you sure you want to delete this item?');" href =/dna/delete/<%= data[i].id %>>Delete</a></td>
+                              
+                                </tr>
+                                <% } %>
+                              </table>
+
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+
+
+            </head>
+          
+         <!-- Modal content for adding new module -->                    
+            <div id="myModal" class="modal">
+           <form method="POST" action="/dna/add/">
+          
+              <div class="modal-content">
+                <span class="close">&times;</span>               
+                <div class="row" style="margin: 20px;">
+                       
+                        <div class="table-responsive table-">
+<table class="table table-borderless table-striped table-earning">
+  <tr>
+  <td>Module name</td>
+  <td><input width="250px;" class="form-control" type="text" name="modulename" required></td>
+  </tr>
+  <tr>
+  <td>Module Color</td>
+  <td><input type="color" class="form-control" name="modulecolor" required></td>
+  </tr>
+  <tr >
+  <td colspan="2"><input type="submit" class="btn btn-lg btn-info btn-block" value="Add" ></td>
+  </tr>
+</table>
+</div>
+
+</div>
+              </div>
+
+            </form>
+            </div>
+       
+                
+            <div id="myModal1" class="modal1">
+                  
+                   
+                       <div class="modal-content1" style="height: 350px;">
+                         <span class="close1">&times;</span>               
+                         <form method="POST" action="/dashboard/update/<%= data[0].id %>">
+                          <h3>Update Module</h3>
+                                <!-- MAIN CONTENT-->
+                                <div class="main-content" style="padding:5px;">
+                                    
+                                        <div class="container-fluid">
+                                            <div class="row" style="margin-left: 0px;">
+                                               
+                                                    <div class="table-responsive table-">
+                          <table class="table table-borderless table-striped table-earning">
+                              <tr>
+                              <td>Module name</td>
+                              <td contenteditable='true'><input class="form-control" type="text" name="mname" value="<%= data[0].module_name %>"></td>
+                              </tr>
+                              <tr>
+                              <td>Color </td>
+                              <td><input type="text" class="form-control" name="color" value="<%= data[0].module_color %>"></td>
+                              </tr>
+                              <tr >
+                              <td colspan="2"><input type="submit" class="btn btn-lg btn-info btn-block" value="Update" ></td>
+                              </tr>
+                          </table>
+                        </div>
+                        
+                        </div>
+                        </div>
+                       
+                          </form>
+                        
+                       </div>
+         
+                     </div>
+
+
+                     <script>
+                      // Get the modal
+                      var modal = document.getElementById('myModal'); 
+                      var btn = document.getElementById("myBtn");
+                      // Get the <span> element that closes the modal
+                      var span = document.getElementsByClassName("close")[0];            
+                      // When the user clicks the button, open the modal 
+                      btn.onclick = function() {
+                          modal.style.display = "block";
+                      }
+                      
+                      span.onclick = function() {
+                          modal.style.display = "none";
+                      }
+                      window.onclick = function(event) {
+                          if (event.target == modal) {
+                              modal.style.display = "none";
+                          }
+                      }
+                      
+                              // Get the modal
+                              var modal1 = document.getElementById('myModal1'); 
+                              var btn1 = document.getElementById("myBtn1");
+                              // Get the <span> element that closes the modal
+                              var span = document.getElementsByClassName("close1")[0];            
+                              // When the user clicks the button, open the modal 
+                              btn1.onclick = function() {
+                                  modal1.style.display = "block";
+                              }
+                              
+                              span.onclick = function() {
+                                  modal1.style.display = "none";
+                              }
+                              window.onclick = function(event) {
+                                  if (event.target == modal1) {
+                                      modal1.style.display = "none";
+                                  }
+                              }
+                              </script>

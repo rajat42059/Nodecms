@@ -1,0 +1,35 @@
+
+<% layout('/layouts/layoutmenu') -%>
+
+<div class="page-wrapper">
+
+    <div class="page-container">     
+        <div class="main-content">
+            <div class="section__content section__content--p30">  
+                             
+                        <table style="width:70%;margin-left:50px;" class="table table-borderless table-striped table-earning" cellspacing="0" cellpadding="0">
+ 
+                         <thead>
+                            <tr>
+                              <th><span>Module Name</span></th>
+                              <th><span>DNA Name</span></th>                       
+                            
+                            </tr>
+                          </thead>
+                          <% if( data.length>0) {%>
+                            <% for(var i=0; i < data.length; i++) { %>
+                            <tr>
+                              <td class="lalign"><%= data[i].module_name %></td>
+                               <td><%= data[i].field_name %></td>                             
+                            </tr>
+                            <% } %>
+                            <% } else {%>
+                             <tr> <td  colspan="2" >No data found</td>   
+                               </tr>
+                               <% } %>
+                        </table>
+            </div>   
+               </div>      
+    </div>
+</div>   
+    

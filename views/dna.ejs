@@ -1,0 +1,56 @@
+
+
+<% layout('/layouts/layoutmenu') -%>
+
+
+<body class="animsition">
+    <div class="page-wrapper">
+  
+              <!-- PAGE CONTAINER-->
+        <div class="page-container">
+
+          
+                <div class="section__content">
+                        <div class="main-content">
+                                <div class="col-md-12">
+                                        <div class="overview-wrap">
+                                            <h2 class="title-1"></h2>
+                                            <a href="/dna/addnew" >       <button class="au-btn au-btn-icon au-btn--blue">
+  <i class="zmdi zmdi-plus"></i>Add DNA</button></a>
+                                        </div>
+                                    </div>
+                                    <%- messages() %>        
+                        <table id="keywords" style="width:400px;" class="table table-borderless table-striped table-earning" cellspacing="0" cellpadding="0">
+ 
+                                <thead>
+                                <tr>
+                                  <th><span>ID</span></th>
+                                  <th><span>DNA Name</span></th>
+                                  <th><span>Module Name</span></th>
+                                  <th width="20px"><span>Module Color</span></th>
+                                  <th ><span>Edit</span></th>
+                                  <th ><span>Delete</span></th>
+                                
+                                </tr>
+                              </thead>
+                                <% for(var i=0; i < data.length; i++) { %>
+                                <tr>
+                                  <td class="lalign"><%= data[i].id %></td>
+                                   <td><%= data[i].field_name %></td>
+                                   <td><%= data[i].module_name %></td>
+                                   <td width="20px" style="background-color:<%= data[i].module_color %>"></td>
+                                   <td><a href =/dna/editdna/<%= data[i].id %>>Edit</a></td>
+                                   <td><a class="btn btn-danger delete-article" data-id="<%= data[i].id %>" onclick="return confirm('Are you sure you want to delete this item?');" href ="#">Delete</a></td>
+
+                                </tr>
+                                <% } %>
+                              </table>
+                </div>
+            </div>
+            <!-- END MAIN CONTENT-->
+            <!-- END PAGE CONTAINER-->
+        </div>
+
+    </div>
+
+ 

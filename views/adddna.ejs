@@ -1,0 +1,53 @@
+
+<% layout('/layouts/layoutmenu') -%>
+<% if (errors) { %>
+    <% errors.forEach(function(errors) { %>
+        
+       
+        <div class="alert alert-danger"> <h5><%= errors.msg %> </h5></div>
+    
+    <% }); %>
+    <% }  %>
+
+
+<form method="POST" action="#">
+<h1>Update User</h1>
+      <!-- MAIN CONTENT-->
+      <div class="main-content" style="padding:35px;">
+          <div class="section__content section__content--p30">
+              <div class="container-fluid">
+                  <div class="row" style="margin-left: 200px;">
+                     
+                          <div class="table-responsive table-">
+<table class="table table-borderless table-striped table-earning">
+    <tr>
+    <td>Select Module</td>
+    <td>
+        <select class="selectpicker" data-style="btn-info" name="selectmodule">
+            <optgroup label="Select Table">
+                <option value="">Select Module</option>
+           
+            <% rows.forEach(function(row){ %>
+                
+            <option value="<%= row.module_id %>"><%= row.module_name %></option>
+            <% }) %>
+            </optgroup>
+        </select>
+
+
+    </td>
+    </tr>
+    <tr>
+    <td>DNA</td>
+    <td><input type="text" class="form-control" name="dnaname" required ></td>
+    </tr>
+    <tr >
+    <td colspan="2"><input type="submit" class="btn btn-lg btn-info btn-block" value="Add" ></td>
+    </tr>
+</table>
+</div>
+
+</div>
+</div>
+</div>
+</form>
