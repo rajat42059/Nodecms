@@ -105,8 +105,13 @@ var id1=parseInt(users.id)+100;
       return  db.query("update user_login set password=? where token= ?",[hash,users.token],callback);
       
     });
-//    db.query("update user_login set password=? where token= ?",[users.password,users.token],callback);
+
   },
+  updateavatar : function(users,callback) {
+
+    db.query("update user_login set avtar=? where id= ?",[users.filename,users.id],callback);
+  },
+
 }
  
 module.exports = users;

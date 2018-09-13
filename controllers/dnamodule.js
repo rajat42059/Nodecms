@@ -118,20 +118,6 @@ exports.deletemodule = async (req, res, next) => {
 
 };
 
-/*
-exports.deletemodule =  async (req, res, next) => {
- 
-  var promise = await new Promise(function(resolve,reject) {
-    setTimeout(function(){  
-        console.log("1");
-     resolve("done");
-    }, 5000);
-
-  } )
-  
-  promise.then(console.log('2'));
-};
-*/
 
 exports.ajaxdeletedna =   (req, res, next) => {
   var id = req.params.id;

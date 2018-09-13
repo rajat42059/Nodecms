@@ -1,0 +1,62 @@
+
+<% layout('/layouts/layoutmenu') -%>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#upload').bind("click",function() 
+        { 
+            var imgVal = $('#uploadImage').val(); 
+            if(imgVal=='') 
+            { 
+                alert("Please select Image"); 
+                return false; 
+            } 
+            
+    
+        }); 
+    });
+    </script> 
+   
+<form method="POST" enctype="multipart/form-data"  action="/setting">
+   
+      <!-- MAIN CONTENT-->
+      <div class="main-content" style="padding:35px;margin-top: 60px;margin-left: 150px;">
+        <% if (errors) { %>
+            <% errors.forEach(function(errors) { %>
+                
+               
+                <div class="alert alert-danger"> <h5><%= errors.msg %> </h5></div>
+            
+            <% }); %>
+            <% }  %>
+          <div class="section__content section__content--p30">
+              <div class="container-fluid">
+                  <div class="row" style="margin-left: 200px;margin-top: 50px;">
+                     
+                          <div class="table-responsive table-">
+<table class="table table-borderless table-striped table-earning">
+ <!--    <tr>
+    <td>Password</td>
+    <td><input width="250px;" class="form-control" type="text" name="password"></td>
+    </tr>
+    <tr>
+    <td>Confirm Password</td>
+    <td><input type="text" class="form-control" name="cpassword" ></td>
+    </tr>-->
+    <tr>
+        <td>Profile Image</td>
+        <td><input id="uploadImage" type="file" name="imgUploader"></td>
+        </tr>
+
+    <tr >
+    <td colspan="2"><input id="upload" type="submit" class="btn btn-lg btn-info btn-block" value="Update" ></td>
+    </tr>
+      
+</table>
+<%- messages() %>
+</div>
+
+</div>
+</div>
+</div>
+</form>
+

@@ -11,7 +11,12 @@ var session = require('express-session');
 const config = require('./config');
 const brcypt = require('bcryptjs')
 const flash = require('connect-flash');
+var multer = require('multer');
+
+
 var app = express();
+
+
 app.engine('ejs', require('ejs-locals'));
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
@@ -110,6 +115,10 @@ if (app.get('env') === 'development') {
     });
 }
 
+
+
+
+
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
@@ -121,7 +130,64 @@ app.use(function(err, req, res, next) {
     });
 });
 
-app.listen(5000, () => console.log('Listening on port 5000'));
+var serve=app.listen(5000, () => console.log('Listening on port 5000'));
+const io = require('socket.io').listen(serve);
+
+
+/* chat Implementation here  */
+const connections = [];
+users = [];
+io.on('connection', function(socket){
+  connections.push(socket);
+  console.log(' %s sockets is connected', connections.length);
+
+  socket.on('disconnect', () => {
+    connections.splice(connections.indexOf(socket), 1);
+    console.log(' %s sockets is connected', connections.length);
+ });
+
+
+
+socket.on('msg', function(data) {
+  //Send message to everyone
+
+  //insert data here
+  config.query("insert into chats(user,message) values (?,?) ",[data.user,data.message], function (err, rows, fields) {
+
+    if (err) console.log(err);
+    
+
+  });
+
+//get chat here
+config.query("select user,message from chats",function(err,rows,fields){
+
+  io.sockets.emit('newmsg', data);
+})
+
+  //
+ 
+})
+
+
+socket.on('setUsername', function(data) {
+  console.log(data);
+  socket.broadcast.emit('typing', {username:data})
+
+});
+
+
+ //listen on typing
+//  socket.on('typing', (data) => {
+//    console.log('es');
+
+// })
+
+
+});
+
+
+/* chat Implementation ends here  */
 
 module.exports = app;
 

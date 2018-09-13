@@ -1,5 +1,6 @@
 <html>
 <head>
+   
         <script> window.setTimeout(function() {   
                 $("#messages").fadeTo(500, 0).fadeIn(500, function(){    
                          $(this).remove();      }); }, 2000); 
@@ -78,7 +79,7 @@
                             <div class="account-wrap">
                                 <div class="account-item clearfix js-item-menu">
                                     <div class="image">
-                                        <img src="/images/icon/men.jpg" alt="John Doe" />
+                                        <img src="/images/<%=user.avtar %>" alt="John Doe" />
                                     </div>
                                     <div class="content">
                                         <a class="js-acc-btn" href="#"><%=user.firstname %></a>
@@ -87,7 +88,7 @@
                                         <div class="info clearfix">
                                             <div class="image">
                                                 <a href="#">
-                                                    <img src="/images/icon/men.jpg" alt="John Doe" />
+                                                    <img src="/images/<%=user.avtar %>" alt="John Doe" />
                                                 </a>
                                             </div>
                                             <div class="content">
@@ -97,7 +98,10 @@
                                                 <span class="email"><%=user.email %></span>
                                             </div>
                                         </div>
-                                      
+                                        <div class="account-dropdown__item">
+                                            <a href="/setting">
+                                                <i class="zmdi zmdi-settings"></i>Setting</a>
+                                        </div>
                                         <div class="account-dropdown__footer">
                                             <a href="/logout">
                                                 
@@ -144,6 +148,7 @@
                 </li>                                  
                                      
             </ul>
+
         </nav>
     </div>
 </aside>

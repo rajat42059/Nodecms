@@ -53,13 +53,11 @@ router.post('/login', function(req, res, next) {
     });
   } 
 
-
-
-  passport.authenticate('local-login', function(err, user1, info) {
+  passport.authenticate('local-login', function(err, user, info) {
     if (err) { return next(err); }
     // Redirect if it fails
-    if (!user1) { return res.redirect('/'); }
-    req.logIn(user1, function(err) {
+    if (!user) { return res.redirect('/'); }
+    req.logIn(user, function(err) {
       if (err) { return next(err); }
 
       // Redirect if it succeeds
@@ -79,6 +77,16 @@ router.get('/logout', function(req, res){
  
   res.redirect('/');
 });
+
+
+// setting page open
+router.get('/setting',ensureAuthenticated,UserController.setting);
+
+//setting & image update
+
+router.post('/setting',ensureAuthenticated,UserController.settingupdate);
+
+//settings ends
 
 
 router.post('/register',RegisterController.signup);

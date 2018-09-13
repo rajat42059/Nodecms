@@ -7,6 +7,32 @@ var crypto = require('crypto');
 var Userdata = require("../models/user");
 var async = require('async');
 var url = require('url');
+var multer = require('multer');//image upload
+var expressValidator = require('express-validator');
+
+//image path for uploaded
+var Storage = multer.diskStorage({
+  destination: function(req, file, callback) {
+      callback(null, "./public/images");
+  },
+  filename: function(req, file, callback) {
+      callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
+  }
+});
+      //file filter
+      const fileFilter=(req,file,cb)=>{
+        if(file.mimetype==='image/jpeg' || file.mimetype==='image/png'){
+    cb(null,true);
+        }
+        else{
+          let er = [{msg:'Only images are allowed'}];
+          return cb(er, null)  
+        }
+    };
+
+var upload = multer({
+  storage: Storage,fileFilter:fileFilter
+}).single("imgUploader"); //Field name and max count
 
 let connection = mysql.createConnection(mysql);
 //Difine variable for Pagination
@@ -79,10 +105,63 @@ exports.register = (req, res, next) => {
 
 };
 
+exports.setting = (req, res, next) => {
+
+  let errors = [];  
+  res.render('setting',{
+    errors:errors,
+    success:'',
+  });
+
+};
+
+exports.settingupdate =   (req, res, next) => {
+
+ 
+
+
+ upload(req, res, function(err) {
+    if (err) {
+      console.log(err)
+
+     res.render('setting',{user:req.user,errors:err,success:''});
+    // return res.end(err);
+    }
+    else{
+    var userdata=req.user;
+    var id=userdata.id;  
+
+    console.log(req.file);
+  /* if(req.file.filename==undefined){
+     console.log('undefined test')
+   }*/
+
+  var filename=req.file.filename;//filename coming
+
+
+
+
+//insert data
+let data = updateavtar(id,filename);
+data.then(() =>  console.log("B") )
+
+      req.flash('success', 'Image Uploaded sucessfully');
+      
+      res.redirect('setting');
+    }
+
+
+});
+
+
+};
+
 
 exports.home = (req, res, next) => {
- 
+
   Userdata.usersCount(function(err,result) { 
+
+
     
     if (err) {
       console.log(err);
@@ -262,8 +341,8 @@ Userdata.updatetoken({
       port: 587,
       secure: false, // true for 465, false for other ports
       auth: {
-          user: 'ikcjwdpj4e3fzl6r@ethereal.email', // generated ethereal user
-          pass: '9fT2ZJEguRdm7s6JWs' // generated ethereal password
+          user: 'sopcqgijoyrua7w2@ethereal.email', // generated ethereal user
+          pass: 'TpVqQQvPw7hTZVbkWd' // generated ethereal password
       }
   });
 
@@ -386,3 +465,24 @@ function  sendmail(email,password,host,token)  {
                     }
                   
                   };
+
+                  function updateavtar(id,filename) {
+
+                    return new Promise(function(resolve, reject) {
+                  
+                      Userdata.updateavatar({//uplod imge
+                          id: id,
+                          filename:filename
+                        },function (err, result) {
+                          if(err) {
+                            reject(err);
+                          } 
+                         
+                          resolve(result);
+                  
+                        })
+                        
+                    })
+                  }
+
+            

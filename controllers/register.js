@@ -42,7 +42,7 @@ function(req, email, password, done) { // callback with email and password from 
       });  
       }
       else{  
-        return done(null, false, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
+        return done(null, false, req.flash('danger', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
       }
     }
     });
