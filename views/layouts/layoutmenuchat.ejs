@@ -1,43 +1,55 @@
 <html>
+
 <head>
-       
-        <style>
-                * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    <style>
+        .dot {
+    height: 8px;
+    width: 8px;
+    margin:5px;
+    background-color:#35AC19;
+    border-radius: 50%;
+    display: inline-block;
+}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
                
               
                 #messages1 { list-style-type: none; margin: 0; padding: 0; }
                 #messages1 li { padding: 5px 10px; }
                 #messages1 li:nth-child(odd) { background: #eee; }
               </style>
-        <script> window.setTimeout(function() {   
-                $("#messages").fadeTo(500, 0).fadeIn(500, function(){    
-                         $(this).remove();      }); }, 2000); 
-                </script>
+    <script>
+        window.setTimeout(function () {
+            $("#messages").fadeTo(500, 0).fadeIn(500, function () {
+                $(this).remove();
+            });
+        }, 2000);
+    </script>
     <title>Takeda CMS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- Fontfaces CSS-->
-        <link href="/css/font-face.css" rel="stylesheet" media="all">
-        <link href="/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-        <link href="/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
-        <link href="/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-    
-        <!-- Bootstrap CSS-->
-        <link href="/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
-    
-        <!-- Vendor CSS-->
-        <link href="/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-        <link href="/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-        <link href="/vendor/wow/animate.css" rel="stylesheet" media="all">
-        <link href="/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-        <link href="/vendor/slick/slick.css" rel="stylesheet" media="all">
-        <link href="/vendor/select2/select2.min.css" rel="stylesheet" media="all">
-        <link href="/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
-    
-        <!-- Main CSS-->
-        <link href="/css/theme.css" rel="stylesheet" media="all">
-        <link href="/css/model.css" rel="stylesheet" media="all">
-    <link rel="stylesheet" href='/bower_components/bootstrap/dist/css/bootstrap.css'/>
-    
+    <!-- Fontfaces CSS-->
+    <link href="/css/font-face.css" rel="stylesheet" media="all">
+    <link href="/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="/css/theme.css" rel="stylesheet" media="all">
+    <link href="/css/model.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href='/bower_components/bootstrap/dist/css/bootstrap.css' />
+
 
 
     <script type="text/javascript" src="/js/main.js"></script>
@@ -45,76 +57,147 @@
     <script type="text/javascript" src="/js/jquery.tablesorter.min.js"></script>
 
 </head>
+
 <body>
-    
+
     <!-- HEADER DESKTOP-->
     <header class="header-desktop">
-            <div class="section__content section__content--p30">
-                <div class="container-fluid">
-                    <div class="header-wrap">
-                        <form class="form-header" action="/dashboard/customsearch" method="POST">
-                            <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-                            <button class="au-btn--submit" type="submit">
-                                <i class="zmdi zmdi-search"></i>
-                            </button>
-                        </form>
-                        <div class="header-button">
-                            <div class="noti-wrap">
-                                                                <div class="noti__item js-item-menu">
-                                    <i class="zmdi zmdi-email"></i>
-                                    <span class="quantity">1</span>
-                                    <div class="email-dropdown js-dropdown">
-                                        <div class="email__title">
-                                            <p>You have 3 New Emails</p>
-                                        </div>
-                                        <div class="email__item">
-                                            <div class="image img-cir img-40">
-                                                <img src="/images/icon/avatar-06.jpg" alt="Cynthia Harvey" />
-                                            </div>
-                                            <div class="content">
-                                                <p>Meeting about new dashboard...</p>
-                                                <span>Cynthia Harvey, 3 min ago</span>
-                                            </div>
-                                        </div>
-                                    
-                                        <div class="email__footer">
-                                            <a href="#">See all emails</a>
-                                        </div>
-                                    </div>
-                                </div>
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="header-wrap">
+                    <form class="form-header" action="/dashboard/customsearch" method="POST">
+                        <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                        <button class="au-btn--submit" type="button">
+                            <i class="zmdi zmdi-search"></i>
+                        </button>
+                    </form>
+    <!-- Chat code begin-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+        //
+        $(function () {
+            var socket = io();
+           
+            socket.emit('onlineusers',  {  userid: '<%=  user.id %>',  username: '<%=  user.firstname %>'   });
+            $('#m').on('keypress', () => {
+                socket.emit('isTyping', '<%=  user.firstname %>');
+            })
+            //Listen on typing
+            socket.on('typing', (data) => {
+                document.getElementById('typing_on').innerHTML = data.username + " is typing";
+                setTimeout(function () {
+                    document.getElementById('typing_on').innerHTML = '';
+                }, 3000); //clear is typing
+
+            })
+
+            //getting onlineusers
+            socket.on('totalonlineuser', (data) => {  
+                      
+           var lunch=data.username;
+           var html = '';    
+           for (var key in lunch) {
+	if (lunch.hasOwnProperty(key)) {        
+        html+="<div class='email__title'> <p >" +lunch[key]+ "<span class='dot'></span></p>  </div>";       
+    }
+    
+}
+$('#adduser').append(html);     
+$('#t1').append(html);           
+      document.getElementById('typing_on').innerHTML = html; //need to be fixed
+            })
+
+
+            //Total user online count
+            socket.on('totaluser', (data) => {
+                document.getElementById('totaluser').innerHTML = data.totaluser;
+            })
+
+
+
+
+            $('form').submit(function () {
+
+                socket.emit('msg', {
+                    message: $('#m').val(),
+                    user: '<%=  user.firstname %>'
+                });
+                $('#m').val('');
+                return false;
+            });
+            socket.on('newmsg', function (data) {
+                var html = '';
+                //     for (var i=0; i<data.length; i++) {
+                //     html +="<li class='message'>" + data[i].user + ": " + data[i].message + "</li>";}
+                $('#messages1').append("<li class='message'>" + data.user + ": " + data.message +
+                    "</li>");
+                //$('#messages1').append(html);
+
+            });
+        });
+    </script>
+                    <div class="header-button">
+                        <div class="noti-wrap">
+                            <div class="noti__item js-item-menu">
+                                <i class="fa fa-user"></i>
+
+                                <span id="totaluser" class="quantity"></span>
+                                <div id="adduser" class="email-dropdown js-dropdown">
+
                           
+                                    
+                                </div>
                             </div>
-                            <div class="account-wrap">
-                                <div class="account-item clearfix js-item-menu">
-                                    <div class="image">
-                                        <img src="/images/<%=user.avtar %>" alt="John Doe" />
-                                    </div>
-                                    <div class="content">
-                                        <a class="js-acc-btn" href="#"><%=user.firstname %></a>
-                                    </div>
-                                    <div class="account-dropdown js-dropdown">
-                                        <div class="info clearfix">
-                                            <div class="image">
+
+                        </div>
+                        <div id="ou" class="noti__item js-item-menu show-dropdown">
+                           
+                            <i class="zmdi zmdi-notifications"></i>
+                            <span class="quantity">3</span>
+                            <div id="t1" class="notifi-dropdown js-dropdown">
+                                
+                              
+                            
+                               
+                                <div class="notifi__footer">
+                                    <a href="#">Total User Online</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="account-wrap">
+                            <div class="account-item clearfix js-item-menu">
+                                <div class="image">
+                                    <img src="/images/<%=user.avtar %>" alt="na" />
+                                </div>
+                                <div class="content">
+                                    <a class="js-acc-btn" href="#">
+                                        <%=user.firstname %></a>
+                                </div>
+                                <div class="account-dropdown js-dropdown">
+                                    <div class="info clearfix">
+                                        <div class="image">
+                                            <a href="#">
+                                                <img src="/images/<%=user.avtar %>" alt="John Doe" />
+                                            </a>
+                                        </div>
+                                        <div class="content">
+                                            <h5 class="name">
                                                 <a href="#">
-                                                    <img src="/images/<%=user.avtar %>" alt="John Doe" />
-                                                </a>
-                                            </div>
-                                            <div class="content">
-                                                <h5 class="name">
-                                                    <a href="#"><%=user.firstname %></a>
-                                                </h5>
-                                                <span class="email"><%=user.email %></span>
-                                            </div>
+                                                    <%=user.firstname %></a>
+                                            </h5>
+                                            <span class="email">
+                                                <%=user.email %></span>
                                         </div>
-                                        <div class="account-dropdown__item">
-                                            <a href="/setting">
-                                                <i class="zmdi zmdi-settings"></i>Setting</a>
-                                        </div>
-                                        <div class="account-dropdown__footer">
-                                            <a href="/logout">
-                                                
-                                                <i class="zmdi zmdi-power"></i>Logout</a>
-                                        </div>
+                                    </div>
+                                    <div class="account-dropdown__item">
+                                        <a href="/setting">
+                                            <i class="zmdi zmdi-settings"></i>Setting</a>
+                                    </div>
+                                    <div class="account-dropdown__footer">
+                                        <a href="/logout">
+
+                                            <i class="zmdi zmdi-power"></i>Logout</a>
                                     </div>
                                 </div>
                             </div>
@@ -122,122 +205,85 @@
                     </div>
                 </div>
             </div>
-        </header>
-        <!-- HEADER DESKTOP-->
+        </div>
+    </header>
+    <!-- HEADER DESKTOP-->
 
-<section class="container">
-   
-   <!-- MENU SIDEBAR-->
-   <aside class="menu-sidebar d-none d-lg-block">
-    <div class="logo">
-        <a href="#">
-            <img src="/images/icon/takeda.png" alt="Cool Admin" />
-        </a>
-    </div>
-    <div class="menu-sidebar__content js-scrollbar1">
-        <nav class="navbar-sidebar">
-            <ul class="list-unstyled navbar__list">
-                <li class="active has-sub">
-                    <a  href="/home">
-                        <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                   
-                </li>
-                <li>
-                    <a href="/dashboard">
-                        <i class="fas fa-chart-bar"></i>User list</a>
-                </li>
-                <li>
-                    <a href="/module">
-                        <i class="fas fa-table"></i>Modules List</a>
-                </li>
-                <li>
-                    <a href="/dna">
-                        <i class="far fa-check-square"></i>DNA list</a>
-                </li>                                  
-                                     
-            </ul>
-<div class="chat" style="background-color:#f8f9f9 ">
-    <h3>Send Broadcast</h3>
-    <ul id="messages1"></ul>
-    <div id="typing_on" style="position: fixed;"></div> 
-    <form action="" style="background: #000; padding: 3px; position: fixed; bottom: 0; width: 20%;">
-      <input id="m" required  autocomplete="off" style="border: 0; padding: 10px; width: 90%; margin-right: -7.5%; " /><button style=" width: 17%; background: rgb(130, 224, 255); border: none; padding: 10px;">Send</button>
-    </form>
-</div>
+    <section class="container">
 
-        </nav>
-    </div>
-</aside>
+        <!-- MENU SIDEBAR-->
+        <aside class="menu-sidebar d-none d-lg-block">
+            <div class="logo">
+                <a href="#">
+                    <img src="/images/icon/takeda.png" alt="Cool Admin" />
+                </a>
+            </div>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+                        <li class="active has-sub">
+                            <a href="/home">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
 
-<!-- END MENU SIDEBAR-->
-    <%-body -%>
-</section>
+                        </li>
+                        <li>
+                            <a href="/dashboard">
+                                <i class="fas fa-chart-bar"></i>User list</a>
+                        </li>
+                        <li>
+                            <a href="/module">
+                                <i class="fas fa-table"></i>Modules List</a>
+                        </li>
+                        <li>
+                            <a href="/dna">
+                                <i class="far fa-check-square"></i>DNA list</a>
+                        </li>
 
-<!-- Chat code begin-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
+                    </ul>
+                    <div class="chat" style="background-color:#f8f9f9 ">
+                        <h3>Send Broadcast</h3>
+                        <ul id="messages1"></ul>
+                        <div id="typing_on" style="position: fixed;"></div>
+                        <form action="" style="background: #000; padding: 3px; position: fixed; bottom: 0; width: 20%;">
+                            <input id="m" required autocomplete="off" style="border: 0; padding: 10px; width: 90%; margin-right: -7.5%; " /><button
+                                style=" width: 17%; background: rgb(130, 224, 255); border: none; padding: 10px;">Send</button>
+                        </form>
+                    </div>
+
+                </nav>
+            </div>
+        </aside>
        
-          //
-            $(function () {
-              var socket = io();
-
-    
-    $('#m').on('keypress',function()
-{
-    socket.emit('setUsername', '<%=  user.firstname %>');
-})
-//Listen on typing
-socket.on('typing', (data) => {
-
-document.getElementById('typing_on').innerHTML =data.username +" is typing";
-setTimeout(function(){ document.getElementById('typing_on').innerHTML =''; }, 3000);
-
-	})
+        <!-- END MENU SIDEBAR-->
+        <%-body -%>
+    </section>
 
 
-
-              $('form').submit(function(){
-         
-                socket.emit('msg', {message: $('#m').val(), user: '<%=  user.firstname %>'});
-                $('#m').val('');
-                return false;
-              });
-              socket.on('newmsg', function(data){
-                var html='';
-           //     for (var i=0; i<data.length; i++) {
-       //     html +="<li class='message'>" + data[i].user + ": " + data[i].message + "</li>";}
-            $('#messages1').append("<li class='message'>" + data.user + ": " + data.message + "</li>");
-            //$('#messages1').append(html);
-            
-});
-            });
-          </script>
 </body>
-   <!-- Jquery JS-->
-   <script src="/vendor/jquery-3.2.1.min.js"></script>
-   <!-- Bootstrap JS-->
-   <script src="/vendor/bootstrap-4.1/popper.min.js"></script>
-   <script src="/vendor/bootstrap-4.1/bootstrap.min.js"></script>
-   <!-- Vendor JS       -->
-   <script src="/vendor/slick/slick.min.js">
-   </script>
-   <script src="/vendor/wow/wow.min.js"></script>
-   <script src="/vendor/animsition/animsition.min.js"></script>
-   <script src="/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-   </script>
-   <script src="/vendor/counter-up/jquery.waypoints.min.js"></script>
-   <script src="/vendor/counter-up/jquery.counterup.min.js">
-   </script>
-   <script src="/vendor/circle-progress/circle-progress.min.js"></script>
-   <script src="/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-   <script src="/vendor/chartjs/Chart.bundle.min.js"></script>
-   <script src="/vendor/select2/select2.min.js">
-   </script>
+<!-- Jquery JS-->
+<script src="/vendor/jquery-3.2.1.min.js"></script>
+<!-- Bootstrap JS-->
+<script src="/vendor/bootstrap-4.1/popper.min.js"></script>
+<script src="/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+<!-- Vendor JS       -->
+<script src="/vendor/slick/slick.min.js">
+</script>
+<script src="/vendor/wow/wow.min.js"></script>
+<script src="/vendor/animsition/animsition.min.js"></script>
+<script src="/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+</script>
+<script src="/vendor/counter-up/jquery.waypoints.min.js"></script>
+<script src="/vendor/counter-up/jquery.counterup.min.js">
+</script>
+<script src="/vendor/circle-progress/circle-progress.min.js"></script>
+<script src="/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+<script src="/vendor/chartjs/Chart.bundle.min.js"></script>
+<script src="/vendor/select2/select2.min.js">
+</script>
 
-   <script src="/js/main.js"></script>
-   <script src="/js/ajaxdelete.js"> </script>
+<script src="/js/main.js"></script>
+<script src="/js/ajaxdelete.js"> </script>
 
 
-  
+
 </html>
