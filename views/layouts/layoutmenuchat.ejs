@@ -80,6 +80,7 @@
             var socket = io();
            
             socket.emit('onlineusers',  {  userid: '<%=  user.id %>',  username: '<%=  user.firstname %>'   });
+       
             $('#m').on('keypress', () => {
                 socket.emit('isTyping', '<%=  user.firstname %>');
             })
@@ -283,7 +284,5 @@ $('#t1').append(html);
 
 <script src="/js/main.js"></script>
 <script src="/js/ajaxdelete.js"> </script>
-
-
 
 </html>

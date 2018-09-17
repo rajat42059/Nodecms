@@ -69,7 +69,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 app.use(favicon());
-app.use(logger("dev"));
+//app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(expressValidator());
@@ -128,31 +128,16 @@ const connections = [];
 onlineuser = [];
 io.on("connection", function(socket) {
   connections.push(socket);
-
-
   io.sockets.emit("totaluser", { totaluser: connections.length - 1 }); ////increasing online user count
 
-  console.log(" %s sockets is connected", connections.length);
+  console.log(" %s sockets is connected", connections.length); 
 
-  
-
-  socket.on("disconnect", () => {
-   var oldconnecteduser=socket.disconnecteduser
- 
-   oldconnecteduser.splice(oldconnecteduser.indexOf(socket.username),1);
-
-    connections.splice(connections.indexOf(socket), 1);
-    io.sockets.emit("totaluser", { totaluser: connections.length - 1 }); //decreasing online user count
-
-    var connectionMessage = socket.username + " Disconnected from Socket " + socket.id;
-console.log('d1')
-   io.sockets.emit("totalonlineuser", { username: oldconnecteduser }); //emitting username
-   console.log('d2')
-  });
 
 //online users
 socket.on("onlineusers", data => {
- 
+  console.log('4')
+  console.log(onlineuser)
+  console.log('5')
   socket.username = data.username;
  
   var totaluser = onlineuser.push(data);
@@ -168,11 +153,35 @@ socket.on("onlineusers", data => {
        }
        unique[array[i].userid] = 0;
       }
-
+      
  socket.disconnecteduser = distinct;
 
-  io.sockets.emit("totalonlineuser", { username: distinct }); //emitting username
+io.sockets.emit("totalonlineuser", { username: distinct }); //emitting username
 });
+
+
+  
+  socket.on("disconnect", () => {
+   var oldconnecteduser=socket.disconnecteduser
+   
+   console.log(oldconnecteduser +'Disconnected array');
+
+   oldconnecteduser.splice(oldconnecteduser.indexOf(socket.username),1);
+
+    connections.splice(connections.indexOf(socket), 1);
+  
+    onlineuser.splice(onlineuser.indexOf(socket.username), 1);
+
+
+    io.sockets.emit("totaluser", { totaluser: connections.length - 1 }); //decreasing online user count
+
+    var connectionMessage = socket.username + " Disconnected from Socket " + socket.id;
+
+  io.sockets.emit("totalonlineuser", { username: oldconnecteduser }); //emitting username
+
+  });
+
+
 
 
 
