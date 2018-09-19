@@ -120,7 +120,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-var serve = app.listen(5000, () => console.log("Listening on port 5000"));
+var serve = app.listen(process.env.port||5000, () => console.log("Listening on port 5000"));
 const io = require("socket.io").listen(serve);
 
 /* chat Implementation here  */
@@ -165,8 +165,10 @@ io.sockets.emit("totalonlineuser", { username: distinct }); //emitting username
    var oldconnecteduser=socket.disconnecteduser
    
    console.log(oldconnecteduser +'Disconnected array');
-
-   oldconnecteduser.splice(oldconnecteduser.indexOf(socket.username),1);
+if(oldconnecteduser.splice!=undefined){
+  oldconnecteduser.splice(oldconnecteduser.indexOf(socket.username),1);
+}
+   
 
     connections.splice(connections.indexOf(socket), 1);
   
